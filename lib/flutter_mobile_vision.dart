@@ -123,8 +123,7 @@ class FlutterMobileVision {
       'fps': fps,
     };
 
-    final List list = await (_channel.invokeMethod('face', arguments)
-        as FutureOr<List<dynamic>>);
+    final List list = await (_channel.invokeMethod('face', arguments));
 
     return list.map((map) => Face.fromMap(map)).toList();
   }
