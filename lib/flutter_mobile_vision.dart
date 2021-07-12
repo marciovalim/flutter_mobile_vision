@@ -59,13 +59,13 @@ class FlutterMobileVision {
       'multiple': multiple,
       'waitTap': waitTap,
       'showText': showText,
-      'previewWidth': preview != null ? preview.width : PREVIEW.width,
-      'previewHeight': preview != null ? preview.height : PREVIEW.height,
+      'previewWidth': preview.width,
+      'previewHeight': preview.height,
       'camera': camera,
       'fps': fps,
     };
 
-    final List list = await (_channel.invokeMethod('scan', arguments) as FutureOr<List<dynamic>>);
+    final List list = await (_channel.invokeMethod('scan', arguments));
 
     return list.map((map) => Barcode.fromMap(map)).toList();
   }
@@ -95,7 +95,8 @@ class FlutterMobileVision {
       'fps': fps,
     };
 
-    final List list = await (_channel.invokeMethod('read', arguments) as FutureOr<List<dynamic>>);
+    final List list = await (_channel.invokeMethod('read', arguments)
+        as FutureOr<List<dynamic>>);
 
     return list.map((map) => OcrText.fromMap(map)).toList();
   }
@@ -123,7 +124,8 @@ class FlutterMobileVision {
       'fps': fps,
     };
 
-    final List list = await (_channel.invokeMethod('face', arguments) as FutureOr<List<dynamic>>);
+    final List list = await (_channel.invokeMethod('face', arguments)
+        as FutureOr<List<dynamic>>);
 
     return list.map((map) => Face.fromMap(map)).toList();
   }
