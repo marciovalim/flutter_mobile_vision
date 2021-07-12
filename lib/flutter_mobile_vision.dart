@@ -95,8 +95,7 @@ class FlutterMobileVision {
       'fps': fps,
     };
 
-    final List list = await (_channel.invokeMethod('read', arguments)
-        as FutureOr<List<dynamic>>);
+    final List list = await (_channel.invokeMethod('read', arguments));
 
     return list.map((map) => OcrText.fromMap(map)).toList();
   }
